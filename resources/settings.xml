@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+<category label="30120">
+        <setting id="record_active" type="bool" label="30310" default="false" enable="!eq(2,)"/>
+        <setting id="record_type" type="enum" label="30320" lvalues="30510|30520" enable="eq(-1,false)"/>
+        <setting id="record_folder" label="30340" type="folder" source="folder" option="writeable"  enable="eq(-2,false)"/>
+</category>
+<category label="30115">
+        <setting id="only_active_favorits" type="bool" label="30350" default="true"/>
+</category>
+<category label="30112">
+        <setting id="Tags-Featured" type="text" label="30410" />
+        <setting id="Tags-Weiblich" type="text" label="30420" />
+        <setting id="Tags-Maennlich" type="text" label="30430" />
+        <setting id="Tags-Paar" type="text" label="30440" />
+        <setting id="Tags-Transsexual" type="text" label="30450" />
+</category>
+
+<category label="30125">
+        <setting id="FastStream" type="bool" label="30600" default="true"/>
+</category>
+
+
+</settings>

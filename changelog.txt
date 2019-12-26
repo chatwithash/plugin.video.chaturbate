@@ -1,0 +1,66 @@
+11.10.2018 - v2.4.1
+    - HSK RegEx Fix
+
+16.06.2017 - v2.4.0
+    - Aufzeichnung in service.chaturbate_recording ausgelagert
+    - alle Kontexmenüs haben nun einen Settings-Eintrag
+
+16.02.2017 - v2.3.0
+    - neues Feature: FastStream hinzugefügt
+
+10.09.2016 - v2.2.6
+    - Thumbnail-Fix
+
+04.09.2016 - v2.2.5
+    - Favorite-Fix
+
+27.08.2016 - v2.2.4
+    - URL-Fix
+    
+02.05.2016 - v2.2.3
+    - Umstellung auf xbmcvfs
+    - anfügen einer Aufnahme entfernt
+    - überschreiben einer Aufnahme entfernt
+    - Aufnahmen nun mit Timestamp
+
+09.01.2016 - v2.2.2
+    - neues Feature: Directplay eingefügt
+
+03.01.2016 - v2.2.1
+    - neues Feature: jetzt auch auf hebräisch (Thx yaron!)
+
+23.12.2015 - v2.2.0
+    - neues Feature: es werden nun auch Tags unterstützt
+
+09.10.2015 - v2.1.2
+    - Fix: Thumbnail Refresh Bug behoben
+
+03.10.2015 - v2.1.1
+    - Fix: Thumbnail-URL
+    - Fix: Zugriff auf https umgestellt
+    - neues Feature: inaktive Favoriten nun anzeigbar (siehe Settings)
+
+24.12.2014 - v2.1.0
+    - Favoriten hinzugefügt
+    - auf i18n umgestellt
+
+29.07.2014 - v2.0.0
+    - von NamedPipes auf LocalProxy umgestellt
+    - alle Kategorien außer Group Shows stehen nun zur Verfügung
+    - Playliste von http auf https umgestellt
+    - Fehlermeldung wenn Actor beim Start offline ist
+    - Timeout bei fehlerhaften Stream auf ca.10 Sekunden gekürzt
+    - Aufzeichnemodus implementiert
+    - Streamstart optimiert
+
+15.03.2014 - v1.0.3
+    - ChunkPlayer "instability_stop" eingefügt
+
+24.01.2014 - v1.0.2
+    - ChunkPlayer optimiert
+
+11.01.2014 - v1.0.1
+    - kleine Anpassungen
+
+04.01.2014 - v1.0.0
+    - Veröffentlichung des AddOns

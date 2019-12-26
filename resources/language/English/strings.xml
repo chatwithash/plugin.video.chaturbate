@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	
+	<!-- addon.py -->
+    <string id="30110">Category</string>
+    <string id="30112">Tags</string>
+    <string id="30115">Favorite</string>
+    <string id="30120">Records</string>
+    <string id="30125">Streams</string>
+    
+    <string id="30130">Featured</string>
+    <string id="30135">Female</string>
+    <string id="30140">Male</string>
+    <string id="30145">Couple</string>
+    <string id="30150">Transsexual</string>
+    
+    <string id="30160">Next Page</string>
+
+    <string id="30169">Chaturbate - Settings...</string>
+    <string id="30170">Chaturbate - Add Favorite</string>
+    <string id="30175">Chaturbate - Remove Favorite</string>
+    <string id="30176">Chaturbate - Manage Favorites</string>
+    
+    <!-- ChunkPlayer -->
+    <string id="30180">Actor is offline</string> 
+    <string id="30185">'%s' is no longer available!</string>
+    <string id="30700">Attention</string>
+    <string id="30710">for recording you need the addon service.chaturbate_recording!</string>
+
+    <!-- settings.xml -->
+    <string id="30310">Recording enabled</string>
+    <string id="30320">Recording takes place</string>
+    <string id="30340">Recordfolder</string>
+    <string id="30350">Show only active favorites</string>
+
+    <string id="30410">VIP Featured</string>
+    <string id="30420">VIP Female</string>
+    <string id="30430">VIP Male</string>
+    <string id="30440">VIP Couple</string>
+    <string id="30450">VIP Transsexual</string>
+
+    <string id="30510">one time</string>
+    <string id="30520">ongoing</string>
+
+    <string id="30600">FastStream</string>
+
+</strings>

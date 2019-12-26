@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+
+	<!-- addon.py -->
+    <string id="30110">קטגוריה</string>
+    <string id="30112">תגיות</string>
+    <string id="30115">מועדפים</string>
+    <string id="30120">הקלטות</string>
+    <string id="30125">אָפִיק</string>
+
+    <string id="30130">מומלצים</string>
+    <string id="30135">אישה</string>
+    <string id="30140">גבר</string>
+    <string id="30145">זוג</string>
+    <string id="30150">טרנסקסואל</string>
+
+    <string id="30160">העמוד הבא</string>
+
+    <string id="30170">Chaturbate - הוספה למועדפים</string>
+    <string id="30175">Chaturbate - הסרה מהמועדפים</string>
+
+    <!-- ChunkPlayer -->
+    <string id="30180">השחקנים אינם זמינים</string>
+    <string id="30185">הזמינות של '%s' הופסקה!</string>
+
+    <!-- settings.xml -->
+    <string id="30310">ההקלטה פעילה</string>
+    <string id="30320">ההקלטה תתבצע</string>
+    <string id="30340">תיקיית ההקלטה</string>
+    <string id="30350">הצגת המועדפים הפעילים בלבד</string>
+
+    <string id="30410">אח״מים מומלצים</string>
+    <string id="30420">נשים אח״מיות</string>
+    <string id="30430">גברים אח״מים</string>
+    <string id="30440">זוגות אח״מים</string>
+    <string id="30450">טרנסקסואלים אח״מים</string>
+
+    <string id="30510">פעם אחת</string>
+    <string id="30520">מתמשך</string>
+
+    <string id="30600">זרם מהיר</string>
+
+</strings>
