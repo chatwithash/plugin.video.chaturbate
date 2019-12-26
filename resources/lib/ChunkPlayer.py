@@ -59,7 +59,7 @@ class ChunkPlayer(object):
             room_data = _PlaylistAnylyser(self._faststream).get_playlist(actor)
             listitem.setInfo('video', room_data)
             listitem.setProperty('IsPlayable', 'true')
-            play_url = room_data['showlink'] + '|Origin=https://chaturbate.com&Referer=https://chaturbate.com/&User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36'
+            play_url = room_data['path'] + '|Origin=https://chaturbate.com&Referer=https://chaturbate.com/&User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36'
             playlist.add(play_url, listitem)
             xbmc.Player().play(playlist)
         except:
@@ -157,7 +157,7 @@ class _PlaylistAnylyser(object):
             room_data['studio'] = (["Chaturbate"])
             room_data['mediatype'] = "video"
             room_data['mpaa'] = "XXX"
-            room_data['showlink'] = hls_source[0][1].strip('"')
+            room_data['path'] = hls_source[0][1].strip('"')
         except Exception as inst:
             xbmc.log("Chaturbate: {} : {} ".format(inst,room_data), level=xbmc.LOGNOTICE)
 
