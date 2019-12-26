@@ -178,6 +178,9 @@ class _PlaylistAnylyser(object):
             if public_status not in room_status[0]:
                 xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
             else:
+                #we need to stop the player, before playing next stream
+                #otherwise setInfo fails
+                xbmc.Player().stop()
                 return room_data
         else:
             raise Exception('Couldnt find room dossier')
