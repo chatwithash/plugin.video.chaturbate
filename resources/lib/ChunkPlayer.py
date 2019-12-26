@@ -177,7 +177,7 @@ class _PlaylistAnylyser(object):
         #if room_status != public send notification, else return
         if len(room_status) > 0:
             if public_status not in room_status[0]:
-                xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data["status"])) 
+                xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
             else:
                 return room_data
         else:
