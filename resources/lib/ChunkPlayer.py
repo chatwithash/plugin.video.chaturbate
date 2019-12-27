@@ -168,7 +168,7 @@ class _PlaylistAnylyser(object):
             plot_data['viewers'] = viewers[0][1].strip('"')
             plot_data['gender'] = gender[0][1].strip('"')
             room_title = re.findall(r"(\Wroom_title\W)\W+(\"\w.+?\")", room_dossier[0][1])
-            room_data['Title'] = room_title[0][1].strip('"')
+            room_data['title'] = room_title[0][1].strip('"')
             room_data['plot'] = "Model: {}[CR]Gender: {}[CR]Viewers: {}[CR]Genre: {}".format(actor,plot_data['gender'],plot_data['viewers'],room_data['genre'])
         except Exception as inst:
             xbmc.log("Chaturbate: failed to get optional data {} : {} : {}".format(inst,room_data,plot_data), level=xbmc.LOGNOTICE)
