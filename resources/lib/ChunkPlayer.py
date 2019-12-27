@@ -148,7 +148,7 @@ class _PlaylistAnylyser(object):
 
         #test regex: https://regex101.com/
         try:
-            room_dossier = re.findall(r"(initialRoomDossier)\s+\W\s(.*)", datadec.decode("unicode-escape"))
+            room_dossier = re.findall(r"(initialRoomDossier)\s+\W\s(.*);", datadec.decode("unicode-escape"))
             room_status = re.findall(r"(\Wroom_status\W)\W+(\W\w+\W)", room_dossier[0][1])
             hls_source = re.findall(r"(\Whls_source\W)\W+(\Whttps?\W+\S+)(\W\s)", room_dossier[0][1])
             room_data['status'] = room_status[0][1].strip('"')
