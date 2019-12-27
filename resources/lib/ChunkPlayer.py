@@ -162,8 +162,10 @@ class _PlaylistAnylyser(object):
             room_data['title'] = room_json["room_title"]
             plot_data['viewers'] = room_json["num_viewers"]
             plot_data['gender'] = room_json["broadcaster_gender"]
-            plot_data['apps'] = room_json["apps_running"]
-            room_data['plot'] = "Model: {}[CR]Gender: {}[CR]Viewers: {}[CR]Genre: {}".format(actor,plot_data['gender'],plot_data['viewers'],room_data['genre'])
+            room_data['plot'] = "[B]Model:[/B] [COLOR deeppink]{}[/COLOR][CR]".format(actor)
+            room_data['plot'] += "[B]Gender:[/B] [COLOR deeppink]{}[/COLOR][CR]".format(plot_data['gender'])
+            room_data['plot'] += "[B]Viewers:[/B] [COLOR deeppink]{}[/COLOR][CR]".format(plot_data['viewers'])
+            room_data['plot'] += "[B]Genre:[/B] [COLOR deeppink]{}[/COLOR]".format(room_data['genre'])
         except Exception as inst:
             xbmc.log("Chaturbate: {} : {} ".format(inst,room_data), level=xbmc.LOGNOTICE)
 
