@@ -24,6 +24,7 @@ import re
 import time
 import socket
 import urllib2
+import json
 import xbmc
 import xbmcgui
 import xbmcaddon
@@ -141,41 +142,34 @@ class _PlaylistAnylyser(object):
         request = urllib2.Request(url)
         request.add_header('User-Agent', Config.USER_AGENT)
         data = urllib2.urlopen(request).read()
-        datadec = data.decode("unicode-escape").encode("utf-8")
-        room_data, plot_data = {}, {}
+        room_json, room_data, plot_data = {}, {}, {}
         room_dossier = []
-        public_status = u'"public"'
+        public_status = "public"
 
         #test regex: https://regex101.com/
         try:
-            room_dossier = re.findall(r"(initialRoomDossier)\s+\W\s(.*);", datadec.decode("unicode-escape"))
-            room_status = re.findall(r"(\Wroom_status\W)\W+(\W\w+\W)", room_dossier[0][1])
-            hls_source = re.findall(r"(\Whls_source\W)\W+(\Whttps?\W+\S+)(\W\s)", room_dossier[0][1])
-            room_data['status'] = room_status[0][1].strip('"')
+            room_dossier = re.findall(r"initialRoomDossier\s+\W\s(.*);", data)
+            #scrap json and convert to dict{}
+            room_json = json.JSONDecoder().decode(json.loads(room_dossier[0]))
+
             room_data['cast'] = ([actor])
-            room_data['genre'] = "Porn"
             room_data['studio'] = (["Chaturbate"])
             room_data['mediatype'] = "video"
             room_data['mpaa'] = "XXX"
-            room_data['path'] = hls_source[0][1].strip('"')
+            room_data['genre'] = "Porn"
+            room_data['status'] = room_json["room_status"]
+            room_data['path'] = room_json["hls_source"]
+            room_data['title'] = room_json["room_title"]
+            plot_data['viewers'] = room_json["num_viewers"]
+            plot_data['gender'] = room_json["broadcaster_gender"]
+            plot_data['apps'] = room_json["apps_running"]
+            room_data['plot'] = "Model: {}[CR]Gender: {}[CR]Viewers: {}[CR]Genre: {}".format(actor,plot_data['gender'],plot_data['viewers'],room_data['genre'])
         except Exception as inst:
             xbmc.log("Chaturbate: {} : {} ".format(inst,room_data), level=xbmc.LOGNOTICE)
 
-        #this is optional data, we dont want the code path to fail if any of these fail
-        try:
-            gender = re.findall(r"(\Wbroadcaster_gender\W)\W+(\W\w+\W)", room_dossier[0][1])
-            viewers = re.findall(r"(\Wnum_viewers\W)\W+(\w+)", room_dossier[0][1])
-            plot_data['viewers'] = viewers[0][1].strip('"')
-            plot_data['gender'] = gender[0][1].strip('"')
-            room_title = re.findall(r"(\Wroom_title\W)\W+(\"\w.+?\")", room_dossier[0][1])
-            room_data['title'] = room_title[0][1].strip('"')
-            room_data['plot'] = "Model: {}[CR]Gender: {}[CR]Viewers: {}[CR]Genre: {}".format(actor,plot_data['gender'],plot_data['viewers'],room_data['genre'])
-        except Exception as inst:
-            xbmc.log("Chaturbate: failed to get optional data {} : {} : {}".format(inst,room_data,plot_data), level=xbmc.LOGNOTICE)
-
         #if room_status != public send notification, else return
-        if len(room_status) > 0:
-            if public_status not in room_status[0]:
+        if len(room_dossier) > 0:
+            if public_status not in room_data['status']:
                 xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
             else:
                 #we need to stop the player, before playing next stream
@@ -183,6 +177,7 @@ class _PlaylistAnylyser(object):
                 xbmc.Player().stop()
                 return room_data
         else:
+            xbmc.executebuiltin("Notification(%s, %s)"%("ERROR:", "Could not find room dossier ")) 
             raise Exception('Couldnt find room dossier')
 
     def _get_playlist_url(self, playlist):
