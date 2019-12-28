@@ -148,9 +148,9 @@ class _PlaylistAnylyser(object):
 
         #test regex: https://regex101.com/
         try:
+            #scrape json and convert to dict{}
             room_dossier = re.findall(r"initialRoomDossier\s+\W\s(.*);", data)
-            #scrap json and convert to dict{}
-            room_json = json.JSONDecoder().decode(json.loads(room_dossier[0]))
+            room_json = json.loads(json.loads(room_dossier[0]))
 
             room_data['cast'] = ([actor])
             room_data['studio'] = (["Chaturbate"])
