@@ -50,5 +50,6 @@ class Config(object):
     USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36'
     M3U8_PATTERN = r"(http.*?://.*?.stream.highwebmedia.com.*?m3u8)"
     THUMBURL = "https://roomimg.stream.highwebmedia.com/ri/"
+    CHATURBATE_API = "https://chaturbate.com/api/chatvideocontext/"
 
     CHUNK_PLAYER_PORT = 18517
