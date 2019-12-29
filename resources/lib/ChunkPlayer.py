@@ -138,19 +138,16 @@ class _PlaylistAnylyser(object):
 
     def get_playlist(self, actor):
         "Liefert die *.m3u8-Playlist."
-        url = "%s/%s" % (Config.CHATURBATE_URL, actor)
+        url = "%s/%s" % (Config.CHATURBATE_API, actor)
         request = urllib2.Request(url)
         request.add_header('User-Agent', Config.USER_AGENT)
         data = urllib2.urlopen(request).read()
         room_json, room_data, plot_data = {}, {}, {}
-        room_dossier = []
         public_status = "public"
 
         #test regex: https://regex101.com/
         try:
-            #scrape json and convert to dict{}
-            room_dossier = re.findall(r"initialRoomDossier\s+\W\s(.*);", data)
-            room_json = json.loads(json.loads(room_dossier[0]))
+            room_json = json.loads(data)
 
             room_data['cast'] = ([actor])
             room_data['studio'] = (["Chaturbate"])
@@ -170,7 +167,7 @@ class _PlaylistAnylyser(object):
             xbmc.log("Chaturbate: {} : {} ".format(inst,room_data), level=xbmc.LOGNOTICE)
 
         #if room_status != public send notification, else return
-        if len(room_dossier) > 0:
+        if len(room_json) > 0:
             if public_status not in room_data['status']:
                 xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
             else:
