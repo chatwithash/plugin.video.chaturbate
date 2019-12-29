@@ -136,19 +136,11 @@ class _PlaylistAnylyser(object):
         else:
             return (None, None)
 
-    def get_playlist(self, actor):
-        "Liefert die *.m3u8-Playlist."
-        url = "%s/%s" % (Config.CHATURBATE_API, actor)
-        request = urllib2.Request(url)
-        request.add_header('User-Agent', Config.USER_AGENT)
-        data = urllib2.urlopen(request).read()
+    def _get_metadata(self, actor, data):
+        "Build metadata"
         room_json, room_data, plot_data = {}, {}, {}
-        public_status = "public"
-
-        #test regex: https://regex101.com/
         try:
             room_json = json.loads(data)
-
             room_data['cast'] = ([actor])
             room_data['studio'] = (["Chaturbate"])
             room_data['mediatype'] = "video"
@@ -166,18 +158,29 @@ class _PlaylistAnylyser(object):
         except Exception as inst:
             xbmc.log("Chaturbate: {} : {} ".format(inst,room_data), level=xbmc.LOGNOTICE)
 
-        #if room_status != public send notification, else return
-        if len(room_json) > 0:
-            if public_status not in room_data['status']:
-                xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
-            else:
-                #we need to stop the player, before playing next stream
-                #otherwise setInfo fails
-                xbmc.Player().stop()
-                return room_data
+        return (room_data)
+        
+    def get_playlist(self, actor):
+        "Liefert die *.m3u8-Playlist."
+        url = "%s/%s" % (Config.CHATURBATE_API, actor)
+        request = urllib2.Request(url)
+        request.add_header('User-Agent', Config.USER_AGENT)
+        data = urllib2.urlopen(request).read()
+        room_data = {}
+        public_status = "public"
+
+        try:
+            room_data = self._get_metadata(actor, data)
+        except Exception as inst:
+            xbmc.log("Chaturbate: {} ".format(inst), level=xbmc.LOGNOTICE)
+
+        if public_status not in room_data['status']:
+            xbmc.executebuiltin("Notification(%s, %s %s)"%(actor, "is currently ", room_data['status'])) 
         else:
-            xbmc.executebuiltin("Notification(%s, %s)"%("ERROR:", "Could not find room dossier ")) 
-            raise Exception('Couldnt find room dossier')
+            #we need to stop the player, before playing next stream
+            #otherwise setInfo fails
+            xbmc.Player().stop()
+            return room_data
 
     def _get_playlist_url(self, playlist):
         "Liefert die URL der Playlist."
