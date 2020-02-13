@@ -88,7 +88,7 @@ class Chaturbate(object):
             url = sys.argv[0] + "?" + urllib.urlencode({
                 'submenue': submenue,
             })
-            item = xbmcgui.ListItem(self._addon.getLocalizedString(i18n))
+            item = xbmcgui.ListItem(self._addon.getLocalizedString(i18n), offscreen=True)
             item.addContextMenuItems(
                 self._create_context_submenues()
             )
@@ -186,7 +186,7 @@ class Chaturbate(object):
         for (actor, url, image) in actor_list:
             if only_active_favorits == "true" and not status.is_online(image):
                 continue
-            item = xbmcgui.ListItem(actor, iconImage=image)
+            item = xbmcgui.ListItem(actor, iconImage=image, offscreen=True)
             item.addContextMenuItems(
                 self._create_context_menu_favorits(actor)
             )
@@ -211,7 +211,7 @@ class Chaturbate(object):
         for name, image in Actors().names_and_images(category, page, tag):
             if name and image:
                 url = sys.argv[0] + "?" + urllib.urlencode({'actor' : name})
-                item = xbmcgui.ListItem(name, iconImage=image)
+                item = xbmcgui.ListItem(name, iconImage=image, offscreen=True)
                 item.addContextMenuItems(
                     self._create_context_menu_for_actor(name, url, image)
                 )
