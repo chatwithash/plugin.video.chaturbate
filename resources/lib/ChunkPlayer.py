@@ -179,7 +179,8 @@ class _PlaylistAnylyser(object):
         else:
             #we need to stop the player, before playing next stream
             #otherwise setInfo fails
-            xbmc.Player().stop()
+            #is this a v7 bug?
+            #xbmc.Player().stop()
             return room_data
 
     def _get_playlist_url(self, playlist):
